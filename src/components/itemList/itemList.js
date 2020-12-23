@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import "./itemList.css";
 
-import gotServices from "../../services/gotServices";
 export default class ItemList extends Component {
-  gotServices = new gotServices();
   state = {
-    charList: null
+    itemList: null
   };
   componentDidMount() {
-    this.gotServices.getAllCharacters().then(charList => {
+    const { getData } = this.props;
+    getData().then(itemList => {
       this.setState({
-        charList
+        itemList
       });
     });
   }
@@ -20,7 +19,7 @@ export default class ItemList extends Component {
         <li
           key={i}
           className="list-group-item"
-          onClick={() => this.props.onCharSelected( 41 + i)}
+          onClick={() => this.props.onCharSelected(41 + i)}
         >
           {item.name}
         </li>
@@ -28,11 +27,11 @@ export default class ItemList extends Component {
     });
   }
   render() {
-    const { charList } = this.state;
-    if (!charList) {
+    const { itemList } = this.state;
+    if (!itemList) {
       return <span> Loading... </span>;
     }
-    const items = this.renderItem(charList);
+    const items = this.renderItem(itemList);
     return <ul className="item-list list-group">{items}</ul>;
   }
 }

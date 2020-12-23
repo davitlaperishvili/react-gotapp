@@ -3,8 +3,10 @@ import { Col, Row, Container } from "reactstrap";
 import ItemList from "../itemList";
 import CharDetails from "../charDetails";
 import ErrorMessage from "../errorMessage";
+import gotServices from "../../services/gotServices";
 
 export default class CharacterPage extends Component {
+  gotServices = new gotServices();
   state = {
     selectedChar: 130,
     error: false
@@ -21,17 +23,19 @@ export default class CharacterPage extends Component {
     });
   }
   render() {
-    const { selectedChar } = this.state;
     if (this.state.error) {
       return <ErrorMessage />;
     }
     return (
       <Row>
         <Col md="6">
-          <ItemList onCharSelected={this.onCharSelected} />
+          <ItemList
+            onCharSelected={this.onCharSelected}
+            getData={this.gotServices.getAllCharacters}
+          />
         </Col>
         <Col md="6">
-          <CharDetails charId={selectedChar} />
+          <CharDetails charId={this.state.selectedChar} />
         </Col>
       </Row>
     );

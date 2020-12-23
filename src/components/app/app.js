@@ -4,9 +4,13 @@ import Header from "../header";
 import RandomChar from "../randomChar";
 import ErrorMessage from "../errorMessage";
 import CharacterPage from "../characterPage";
+import ItemList from "../itemList";
+import CharDetails from "../charDetails";
+import gotServices from "../../services/gotServices";
 import "./app.css";
 
 export default class App extends Component {
+  gotServices = new gotServices();
   constructor(props) {
     super(props);
     this.state = {
@@ -46,6 +50,17 @@ export default class App extends Component {
             </Col>
           </Row>
           <CharacterPage />
+          <Row>
+            <Col md="6">
+              <ItemList
+                onCharSelected={this.onCharSelected}
+                getData={this.gotServices.getAllBooks}
+              />
+            </Col>
+            <Col md="6">
+              <CharDetails charId={this.state.selectedChar} />
+            </Col>
+          </Row>
         </Container>
       </>
     );
