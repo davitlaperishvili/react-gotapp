@@ -10,7 +10,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: true
+      display: true,
+      error: false
     };
     this.hideChar = () => {
       this.setState(({ display }) => ({
@@ -18,9 +19,17 @@ export default class App extends Component {
       }));
     };
   }
+  componentDidCatch() {
+    this.setState({
+      error: true
+    });
+  }
   render() {
-    const { display, selectedChar } = this.state;
+    const { display } = this.state;
     const displayChar = display ? <RandomChar /> : null;
+    if (this.state.error) {
+      return <ErrorMessage />;
+    }
     return (
       <>
         <Container>
@@ -36,7 +45,7 @@ export default class App extends Component {
               </button>
             </Col>
           </Row>
-          <CharactedPage />
+          <CharacterPage />
         </Container>
       </>
     );
