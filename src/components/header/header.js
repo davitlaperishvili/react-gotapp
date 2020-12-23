@@ -10,7 +10,7 @@ const HeaderBlock = styled.div`
 
 const HeaderTitle = styled.h3`
   font-size: 24px;
-  color: #fff;
+  color: #000;
   margin: 0;
 `;
 
@@ -18,7 +18,7 @@ const HeaderLinks = styled.ul`
   display: flex;
   margin: 0;
   align-items: center;
-  color: #fff;
+  color: #000;
   list-style-type: none;
   li {
     margin-right: 20px;
