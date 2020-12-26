@@ -5,7 +5,7 @@ import RandomChar from "../randomChar";
 import ErrorMessage from "../errorMessage";
 import CharacterPage from "../characterPage";
 import ItemList from "../itemList";
-import CharDetails from "../charDetails";
+import CharDetails, { Field } from "../charDetails";
 import gotServices from "../../services/gotServices";
 import "./app.css";
 
@@ -53,7 +53,7 @@ export default class App extends Component {
           <Row>
             <Col md="6">
               <ItemList
-                onCharSelected={this.onCharSelected}
+                onItemSelected={this.onItemSelected}
                 getData={this.gotServices.getAllBooks}
               />
             </Col>

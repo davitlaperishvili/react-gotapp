@@ -13,15 +13,17 @@ export default class ItemList extends Component {
       });
     });
   }
-  renderItem(arr) {
-    return arr.map((item, i) => {
+  renderItems(arr) {
+    return arr.map(item => {
+      const { id } = item;
+      const label = this.props.renderItem(item);
       return (
         <li
-          key={i}
+          key={id}
           className="list-group-item"
-          onClick={() => this.props.onCharSelected(41 + i)}
+          onClick={() => this.props.onItemSelected(41 + i)}
         >
-          {item.name}
+          {label}
         </li>
       );
     });
@@ -31,7 +33,7 @@ export default class ItemList extends Component {
     if (!itemList) {
       return <span> Loading... </span>;
     }
-    const items = this.renderItem(itemList);
+    const items = this.renderItems(itemList);
     return <ul className="item-list list-group">{items}</ul>;
   }
 }
