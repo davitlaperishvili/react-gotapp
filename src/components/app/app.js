@@ -50,19 +50,21 @@ export default class App extends Component {
             </Col>
           </Row>
           <CharacterPage />
-          <Row>
-            <Col md="6">
-              <ItemList
-                onItemSelected={this.onItemSelected}
-                getData={this.gotServices.getAllBooks}
-              />
-            </Col>
-            <Col md="6">
-              <CharDetails charId={this.state.selectedChar} />
-            </Col>
-          </Row>
+          
         </Container>
       </>
     );
   }
 }
+
+// <Row>
+//     <Col md="6">
+//       <ItemList
+//         onItemSelected={this.onItemSelected}
+//         getData={this.gotServices.getAllBooks}
+//       />
+//     </Col>
+//     <Col md="6">
+//       <CharDetails charId={this.state.selectedChar} />
+//     </Col>
+//   </Row>
