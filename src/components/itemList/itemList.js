@@ -15,13 +15,13 @@ export default class ItemList extends Component {
   }
   renderItems(arr) {
     return arr.map((item, i) => {
-      const { id } = item;
+      const { itemCount } = this.props;
       const label = this.props.renderItem(item);
       return (
         <li
           key={i}
           className="list-group-item"
-          onClick={() => this.props.onItemSelected(41 + i)}
+          onClick={() => this.props.onItemSelected(itemCount + i)}
         >
           {label}
         </li>

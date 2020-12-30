@@ -32,6 +32,7 @@ export default class BookPage extends Component {
         onItemSelected={this.onItemSelected}
         getData={this.gotServices.getAllBooks}
         renderItem={({ name }) => `${name}`}
+        itemCount={1}
       />
     );
     const itemDetails = (
@@ -40,7 +41,7 @@ export default class BookPage extends Component {
         getData={this.gotServices.getBook}
       >
         <Field field="numberOfPages" label="Number of pages" />
-        <Field field="publisher" label="Publisher" />
+        <Field field="publiser" label="Publiser" />
         <Field field="released" label="Released" />
       </ItemDetails>
     );
