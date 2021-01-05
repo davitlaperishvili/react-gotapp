@@ -5,3 +5,6 @@ button.char_button {
 .charhide {
   display: none;
 }
+div.row {
+  margin-bottom: 25px;
+}

@@ -3,10 +3,12 @@ import "./itemDetails.css";
 import gotServices from "../../services/gotServices";
 
 const Field = ({ item, field, label }) => {
+  const fieldLabel =
+    item[field] && item[field] != "" ? item[field] : "no data :(";
   return (
     <li className="list-group-item d-flex justify-content-between">
       <span className="term">{label}</span>
-      <span>{item[field]}</span>
+      <span>{fieldLabel}</span>
     </li>
   );
 };
