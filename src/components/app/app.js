@@ -5,8 +5,10 @@ import RandomChar from "../randomChar";
 import ErrorMessage from "../errorMessage";
 import CharacterPage from "../pages/characterPage";
 import BookPage from "../pages/bookPage";
+import BookItem from "../pages/bookPage/bookItem";
 import HousePage from "../pages/housePage";
 import gotServices from "../../services/gotServices";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./app.css";
 
 export default class App extends Component {
@@ -35,25 +37,35 @@ export default class App extends Component {
       return <ErrorMessage />;
     }
     return (
-      <>
-        <Container>
-          <Header />
-        </Container>
-        <Container>
-          <Row>
-            <Col lg={{ size: 5, offset: 0 }}>
-              {displayChar}
-              <button className="char_button" onClick={this.hideChar}>
-                {" "}
-                Button{" "}
-              </button>
-            </Col>
-          </Row>
-          <CharacterPage />
-          <BookPage />
-          <HousePage />
-        </Container>
-      </>
+      <Router>
+        <div className="app">
+          <Container>
+            <Header />
+          </Container>
+          <Container>
+            <Row>
+              <Col lg={{ size: 5, offset: 0 }}>
+                {displayChar}
+                <button className="char_button" onClick={this.hideChar}>
+                  {" "}
+                  Button{" "}
+                </button>
+              </Col>
+            </Row>
+            <Route path="/characters/" component={CharacterPage} />
+            <Route path="/houses/" component={HousePage} />
+            <Route path="/books/" exact component={BookPage} />
+            <Route
+              path="/books/:id"
+              exact
+              render={({ match }) => {
+                const { id } = match.params;
+                return <BookItem bookId={id} />;
+              }}
+            />
+          </Container>
+        </div>
+      </Router>
     );
   }
 }
