@@ -6,7 +6,7 @@
 }
 body {
   overflow-x: hidden;
-  background: #9f9fa5;
+  background-color: #9f9fa5 !important;
   background-size: cover;
   font-size: 16px;
   height: 100vh;
