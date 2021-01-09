@@ -1,6 +1,11 @@
 button.char_button {
   padding: 5px 25px;
   margin-bottom: 30px;
+  background-color: rgb(125, 121, 138);
+  border: none;
+}
+button.char_button:focus {
+  border: none;
 }
 .charhide {
   display: none;

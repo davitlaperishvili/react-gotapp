@@ -47,8 +47,7 @@ export default class App extends Component {
               <Col lg={{ size: 5, offset: 0 }}>
                 {displayChar}
                 <button className="char_button" onClick={this.hideChar}>
-                  {" "}
-                  Button{" "}
+                  Toggle Random Character
                 </button>
               </Col>
             </Row>
